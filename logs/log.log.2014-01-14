@@ -1,0 +1,16 @@
+var grid = null;
+function initComplete(){    
+    grid = $("#dataBasic").quiGrid({
+       columns:[
+           { display: '表', name: 'tableid',     align: 'left', width: "10%"},
+           { display: '行', name: 'rowid',  align: 'left', width: "10%"},
+           { display: '列', name: 'columnid', align: 'left', width: "10%"},
+           { display: '快速定位', name: 'xyz',  align: 'left',  width:"20%"} ,
+           { display: '值', name: 'value',    align: 'left',  width:"30%"} ,
+		   { display: '错误原因', name: 'reason',    align: 'left',  width:"20%"} ,
+         ],
+     url: '<%=path%>/fileUpload.do?action=getErrlist&pager.pageNo=1&pager.pageSize=5&sort=tableid&direction=desc', sortName: 'tableid',rownumbers:true,checkbox:true,
+     height: '100%', width:"100%",pageSize:5,percentWidthMode:true,
+    });
+}
+
