@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -16,9 +16,11 @@ public class Test implements Callable<Object>{
 //		list.add(null);
 //		list.add("hello");
 //		System.out.println(list);
-		System.out.println("\\\\n");
+//		System.out.println("\\\\n");
 //		System.out.println(list.get(3));
-		
+		Integer[] array = new Integer[3];
+		List <Integer> list = Arrays . asList ( array );
+		list.add(0);
 		
 	}
 	@Override

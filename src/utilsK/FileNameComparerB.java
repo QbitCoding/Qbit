@@ -6,9 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
@@ -19,7 +20,7 @@ import java.util.regex.Pattern;
 public final class FileNameComparerB {
 
 	public static void main(String[] args) throws IOException {
-		p= Pattern.compile("\\\\{1}[.[^\\\\]]+$");
+		p= Pattern.compile("\\\\{1}[.[^\\\\\\.]]+$");
 		File root = new File(FileNameComparerA.path);
 		for(File file:root.listFiles()){
 			try {
@@ -30,6 +31,8 @@ public final class FileNameComparerB {
 		}
 		FileWriter fw = new FileWriter(new File(FileNameComparerA.path+"result.txt"));
 		for(String key:map.keySet()){
+			if(map.get(key).size()<2) continue;
+			if(key.indexOf('.')!=-1) continue;
 			fw.write(key+"\r\n");
 			for(String value:map.get(key)){
 				fw.write(value+"\r\n");
@@ -38,7 +41,7 @@ public final class FileNameComparerB {
 		}
 	}
 	private static Pattern p;
-	static Map<String,List<String>> map = new HashMap<String, List<String>>();
+	static Map<String, HashSet<String>> map = new HashMap<String, HashSet<String>>();
 	private static void readFile(File file) throws FileNotFoundException {
 		Scanner sc = new Scanner(file);
 		String fileabsolutepath = null;
@@ -47,8 +50,8 @@ public final class FileNameComparerB {
 			Matcher m = p.matcher(fileabsolutepath);
 			while(m.find()) {
 				String s = m.group();
-				if(map.get(s)==null) map.put(s, new ArrayList<String>());
-				map.get(s).add(fileabsolutepath);
+				if(map.get(s)==null) map.put(s, new HashSet<String>());
+				if(fileabsolutepath.charAt(0)!='\\')map.get(s).add(fileabsolutepath);
 			}
 		}
 	}
