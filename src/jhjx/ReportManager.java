@@ -459,4 +459,21 @@ System.out.println("list:"+list);
 		}
 		return list;
 	}
+	public Map getParameters(String deptid, String date) {
+		List list=null;
+		Map map=null;
+		try{
+			srv.addParameter(deptid);
+			srv.addParameter(date);
+			list=srv.getListMap("jh_parameter4calculate");
+			log.debug("DEPT:"+deptid);
+			log.debug("list:"+list);
+			log.debug("--------------");
+			map= TransTools.listToMap(list, "name", "value");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return map;
+	}
+	private static Log log=LogFactory.getLog("Qbit");
 }

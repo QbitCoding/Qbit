@@ -1,5 +1,5 @@
-import java.util.Arrays;
-import java.util.List;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.concurrent.Callable;
 
 
@@ -18,10 +18,20 @@ public class Test implements Callable<Object>{
 //		System.out.println(list);
 //		System.out.println("\\\\n");
 //		System.out.println(list.get(3));
-		Integer[] array = new Integer[3];
-		List <Integer> list = Arrays . asList ( array );
-		list.add(0);
-		
+//		Integer[] array = new Integer[3];
+//		List <Integer> list = Arrays . asList ( array );
+//		List<Integer> list=new ArrayList<Integer>();
+//		list.add(1);
+//		list.add(2);
+//		System.out.println(list.remove(-1));
+		Deque<Integer> que = new ArrayDeque<Integer>();
+		que.add(1);
+		que.add(2);
+		que.add(3);
+		System.out.println(que.pollFirst());
+		System.out.println(que.pollLast());
+		System.out.println(que.pollFirst());
+		System.out.println(que.pollLast());
 	}
 	@Override
 	public Object call() throws Exception {

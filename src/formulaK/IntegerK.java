@@ -1,14 +1,12 @@
 package formulaK;
 
-import java.math.BigDecimal;
-import java.math.IntegerK;
+import java.math.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import utilsK.ListHelperK;
 
 public final class IntegerK {
 //	public static IntegerK ZERO;
